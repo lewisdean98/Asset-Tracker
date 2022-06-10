@@ -1,20 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 const MainPage  = () => {
-    const [text, onChangeText] = React.useState("");
+    const [text, setText] = React.useState("");
+    const [responseText, setResponseText] = React.useState("  ");
     
     const scanAssetTag = () => {
         //Call API
-        const uri = "http://127.0.0.1:8000/assets/scan/" + text;
+        try {
+            const uri = "http://localhost:8000/assets/scan/" + text;
+            
+            //Call API and set bottom text to HTTP response
+            var response = fetch(uri).then(response=>response.text()).then(data => {setResponseText(data); });
+        } catch (error) {
+            alert(error)
+        }
         
-        const response = fetch(uri);
-
-
-        
-
         //Clear textbox
-        onChangeText("");
+        setText("");
     };
     
     return (
@@ -23,11 +26,13 @@ const MainPage  = () => {
           
           <TextInput 
               style={styles.input}
-              onChangeText = {onChangeText}
+              onChangeText = {setText}
               value = {text}
               autoFocus  = {true}
               onSubmitEditing = {scanAssetTag} 
           />
+
+            <Text style={styles.textbox}>{responseText}</Text>
         </View>
     );
 }

@@ -29,13 +29,12 @@ def editAsset(asset_tag) :
             Asset.objects.filter(asset_tag=asset_tag).update(
                 checked_in = not checkedin,
                 last_checked_out = now(),
-                checked_in_count = checkedincount
         )
         else :
             Asset.objects.filter(asset_tag=asset_tag).update(
                 checked_in = not checkedin,
                 last_checked_in = now(),
-                checked_in_count = checkedincount
+                checked_in_count = checkedincount + 1
         )
 
     except Exception as err:
