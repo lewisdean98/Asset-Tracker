@@ -1,0 +1,30 @@
+services:
+  web : 
+    build :  ./backend
+    container_name : api
+    image : api
+    ports : 
+      - "8000:8000"
+    tty : true
+    volumes :
+      - data:/usr/src/app/web
+
+  asset-tracker :
+    build : ./oss-asset-tracker
+    container_name : app
+    image : app
+    tty : true
+    ports: 
+      - "19006:19006"
+      - "19000:19000"
+      - "19002:19002"
+  
+volumes :
+  data :
+
+  
+
+    
+      
+
+

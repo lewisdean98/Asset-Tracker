@@ -1,0 +1,13 @@
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8000/tcp
+VOLUME ["web/db.sqlite3"]
+
+COPY . .
+
+CMD ["python3", "/usr/src/app/web/manage.py", "runserver", "0.0.0.0:8000"]
