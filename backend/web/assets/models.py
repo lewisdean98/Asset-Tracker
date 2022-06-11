@@ -14,4 +14,5 @@ class Event(models.Model):
     id = models.UUIDField(primary_key=True)
     asset_tag = models.CharField(max_length=8)
     time_stamp = models.DateTimeField(now())
-    issue = models.CharField(max_length=300)
+    ticket = models.CharField(max_length=20)
+    user = models.CharField(max_length=40)

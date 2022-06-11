@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { Text, View, TextInput } from 'react-native';
 import styles from '../style/styles';
 
 const AssetTagScanning  = () => {
@@ -19,7 +19,7 @@ const AssetTagScanning  = () => {
                 const uri = "http://localhost:8000/assets/scan/" + asset_tag;
                 
                 //Call API and set bottom text to HTTP response
-                fetch(uri).then(response=>response.text()).then(data => {setResponseText(data); });
+                fetch(uri).then(response=>response.text()).then(data => {setResponseText(data);});
             } catch (error) {
                 alert(error)
             }
@@ -27,7 +27,6 @@ const AssetTagScanning  = () => {
         else {
             setResponseText("Asset tag invalid, please try again")
         }
-        
         //Clear textbox
         setText("");
     };

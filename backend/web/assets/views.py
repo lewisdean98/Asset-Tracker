@@ -1,10 +1,28 @@
+from multiprocessing import Event
+import uuid
 import django
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.timezone import now
 from .models import Asset
+from .models import Event
 
-# Create your views here.
+def createEvent(asset_tag) :
+    try:
+        Event.objects.create(
+            id = uuid.uuid1(),
+            asset_tag = asset_tag,
+            time_stamp = now(),
+            ticket = "N/A",
+            user = "N/A"
+        )
+    except Exception as err:
+        return(str(err))
+    else:
+        return("Successfully added event")
+
+
+
 def addAsset(asset_tag) :
     try:
         Asset.objects.create(
@@ -47,6 +65,9 @@ def editAsset(asset_tag) :
             return("Successfully checked " + asset_tag + " in")
 
 def scanAsset(request, asset_tag):
+    
+    print(createEvent(asset_tag))
+
     #Asset doesn't exist
     if not Asset.objects.filter(asset_tag=asset_tag).exists():
         return HttpResponse(addAsset(asset_tag))
@@ -54,4 +75,8 @@ def scanAsset(request, asset_tag):
     #Asset already exists
     else:
         return HttpResponse(editAsset(asset_tag))
+
+
+
+
 

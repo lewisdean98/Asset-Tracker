@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         width: 700,
         fontSize:70,
         textAlign : 'center',
+        outlineStyle: 'none'
     },
 });
 
