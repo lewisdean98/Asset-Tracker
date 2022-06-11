@@ -1,21 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-import MainPage from './components/main-page';
+import AssetTagScanning from './components/asset-tag-scanning';
+import styles from './style/styles';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <MainPage />
+      <AssetTagScanning />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
