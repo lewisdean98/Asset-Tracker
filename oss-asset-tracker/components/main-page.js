@@ -6,14 +6,23 @@ const MainPage  = () => {
     const [responseText, setResponseText] = React.useState("  ");
     
     const scanAssetTag = () => {
-        //Call API
-        try {
-            const uri = "http://localhost:8000/assets/scan/" + text;
-            
-            //Call API and set bottom text to HTTP response
-            var response = fetch(uri).then(response=>response.text()).then(data => {setResponseText(data); });
-        } catch (error) {
-            alert(error)
+       
+        //Check that asset tag is valid
+        const re = /^((((b)\d{5}){1})|(((bk)\d{6}){1}))$/
+        
+        if (re.test(text)) 
+            try {
+                //Call API
+                const uri = "http://localhost:8000/assets/scan/" + text;
+                
+                //Call API and set bottom text to HTTP response
+                fetch(uri).then(response=>response.text()).then(data => {setResponseText(data); });
+            } catch (error) {
+                alert(error)
+            }
+        
+        else {
+            setResponseText("Asset tag invalid, please try again")
         }
         
         //Clear textbox

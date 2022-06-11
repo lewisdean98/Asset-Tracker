@@ -4,7 +4,7 @@ from django.utils.timezone import now
 
 # Create your models here.
 class Asset(models.Model):
-    asset_tag = models.CharField(max_length=7, primary_key=True)
+    asset_tag = models.CharField(max_length=8, primary_key=True)
     checked_in = models.BooleanField(0)
     checked_in_count = models.IntegerField(0)
     last_checked_in = models.DateTimeField(now())
@@ -12,6 +12,6 @@ class Asset(models.Model):
     
 class Event(models.Model):
     id = models.UUIDField(primary_key=True)
-    asset_tag = models.CharField(max_length=7)
+    asset_tag = models.CharField(max_length=8)
     time_stamp = models.DateTimeField(now())
     issue = models.CharField(max_length=300)
