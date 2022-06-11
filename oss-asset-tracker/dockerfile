@@ -2,10 +2,14 @@ FROM node:16-alpine
 
 WORKDIR /usr/src/app
 
-RUN npm install --location=global --unsafe-perm expo-cli
 
 EXPOSE 19006/tcp
 
 COPY . .
+
+RUN npm install --location=glob
+
+
+
 
 CMD ["npm", "run", "web"]
