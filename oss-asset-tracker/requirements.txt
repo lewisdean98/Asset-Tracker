@@ -1,2 +1,0 @@
-expo-cli
-@react-navigation/native
