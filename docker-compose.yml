@@ -1,13 +1,29 @@
 services:
+  db:
+    image: postgres
+    container_name : db
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+
   web : 
     build :  ./backend
     container_name : api
     image : api
-    ports : 
-      - "8000:8000"
+    depends_on : 
+      - 'db'
+    ports :
+      - "8000:8000" 
     tty : true
-    volumes :
-      - data:/usr/src/app/web
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
 
   asset-tracker :
     build : ./oss-asset-tracker
@@ -18,9 +34,7 @@ services:
       - "19006:19006"
       - "19000:19000"
       - "19002:19002"
-  
-volumes :
-  data :
+
 
   
 

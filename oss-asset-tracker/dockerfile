@@ -6,7 +6,8 @@ EXPOSE 19006/tcp
 
 COPY . .
 
-RUN npm install --location=global \
-    && npm install --location=global expo-cli
+RUN npm install
+
+RUN npm install --location=global expo-cli
 
 CMD ["npm", "run", "web"]
