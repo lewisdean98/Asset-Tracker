@@ -20,9 +20,7 @@ def createEvent(asset_tag) :
         return(str(err))
     else:
         return("Successfully added event")
-
-
-
+    
 def addAsset(asset_tag) :
     try:
         Asset.objects.create(
