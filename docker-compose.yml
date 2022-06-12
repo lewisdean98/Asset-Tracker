@@ -26,14 +26,12 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   asset-tracker :
-    build : ./oss-asset-tracker
+    build : ./apache
     container_name : app
     image : app
     tty : true
     ports: 
-      - "19006:19006"
-      - "19000:19000"
-      - "19002:19002"
+      - "8080:80"
 
 
   

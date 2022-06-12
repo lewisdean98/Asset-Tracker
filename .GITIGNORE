@@ -3,3 +3,5 @@ oss-asset-tracker/.expo-shared
 oss-asset-tracker/node_modules
 data
 frontend
+apache/html-files
+oss-asset-tracker/web-build
