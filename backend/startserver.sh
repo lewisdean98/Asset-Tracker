@@ -1,3 +1,5 @@
-python3 ./web/manage.py makemigrations assets
-python3 ./web/manage.py migrate 
-python3 ./web/manage.py runserver 0.0.0.0:8000
+cd ./web
+python3 manage.py makemigrations assets
+python3 manage.py migrate 
+
+gunicorn web.wsgi

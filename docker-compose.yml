@@ -4,14 +4,12 @@ services:
     container_name : db
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
+    env_file:
+      - ./.env.dev
 
-  web : 
+  api : 
     build :  ./backend
     container_name : api
     image : api
@@ -20,23 +18,13 @@ services:
     ports :
       - "8000:8000" 
     tty : true
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file:
+      - ./.env.dev
 
-  asset-tracker :
+  frontend :
     build : ./apache
     container_name : app
     image : app
     tty : true
     ports: 
       - "8080:80"
-
-
-  
-
-    
-      
-
-
