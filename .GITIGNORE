@@ -2,5 +2,5 @@ frontend/src/.expo
 frontend/src/.expo-shared
 frontend/src/node_modules
 data
-frontend/apache/html-files
+#frontend/apache/html-files
 frontend/src/web-build
