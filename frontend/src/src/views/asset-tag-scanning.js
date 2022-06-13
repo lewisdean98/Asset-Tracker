@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Text, View, TextInput } from 'react-native';
 import styles from '../style/styles';
+import { useRef } from 'react';
 
 const AssetTagScanning  = () => {
     const [text, setText] = React.useState("");
@@ -29,8 +30,11 @@ const AssetTagScanning  = () => {
         }
         //Clear textbox
         setText("");
+        inputRef.focus();
     };
     
+    const inputRef = useRef();
+
     return (
         <View style={styles.mainPage}>
           <Text style={styles.textbox}>Please scan the asset tag of the device</Text>
@@ -41,6 +45,7 @@ const AssetTagScanning  = () => {
               value = {text}
               autoFocus  = {true}
               onSubmitEditing = {scanAssetTag} 
+              ref = {inputRef}
           />
 
             <Text style={styles.textbox}>{responseText}</Text>
