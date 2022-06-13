@@ -1,7 +1,6 @@
-oss-asset-tracker/.expo
-oss-asset-tracker/.expo-shared
-oss-asset-tracker/node_modules
+frontend/src/.expo
+frontend/src/.expo-shared
+frontend/src/node_modules
 data
-frontend
-apache/html-files
-oss-asset-tracker/web-build
+frontend/apache/html-files
+frontend/src/web-build

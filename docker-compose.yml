@@ -23,7 +23,7 @@ services:
     command: sh -c "cd web && gunicorn web.wsgi:application --bind 0.0.0.0:8000"
 
   frontend :
-    build : ./apache
+    build : ./frontend/apache
     container_name : app
     image : app
     tty : true
