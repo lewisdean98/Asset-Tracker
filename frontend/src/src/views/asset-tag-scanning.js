@@ -3,6 +3,9 @@ import { Text, View, TextInput } from 'react-native';
 import styles from '../style/styles';
 import { useRef } from 'react';
 
+import AssetHistory from '../components/asset-history';
+
+
 const AssetTagScanning  = () => {
     const [text, setText] = React.useState("");
     const [responseText, setResponseText] = React.useState("  ");
@@ -49,6 +52,8 @@ const AssetTagScanning  = () => {
           />
 
             <Text style={styles.textbox}>{responseText}</Text>
+
+            <AssetHistory />
         </View>
     );
 }

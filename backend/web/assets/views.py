@@ -7,6 +7,7 @@ from django.utils.timezone import now
 from .models import Asset
 from .models import Event
 
+
 def createEvent(asset_tag) :
     try:
         Event.objects.create(
@@ -74,7 +75,13 @@ def scanAsset(request, asset_tag):
     else:
         return HttpResponse(editAsset(asset_tag))
 
+def getHistory(request, asset_tag):
 
+    re = []
+    events = Event.objects.filter(asset_tag=asset_tag)
 
+    for i in range(events.__len__()):
+        re.append(str(events[i].time_stamp) + ", ")
+    return HttpResponse(re)
 
 
