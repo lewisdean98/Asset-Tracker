@@ -4,8 +4,10 @@ import django
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.timezone import now
+from numpy import rec
 from .models import Asset
 from .models import Event
+import json
 
 
 def createEvent(asset_tag) :
@@ -80,8 +82,23 @@ def getHistory(request, asset_tag):
     re = []
     events = Event.objects.filter(asset_tag=asset_tag)
 
-    for i in range(events.__len__()):
-        re.append(str(events[i].time_stamp) + ", ")
-    return HttpResponse(re)
+    #Get most recent 5 events
+    for i in range(events.__len__() - 10, events.__len__()):
+
+        #Make date more readable
+        date_time = events[i].time_stamp
+        time_stamp = str(date_time.day) + "/" + str(date_time.month) + "/" + str(date_time.year) + "    " + str(date_time.hour) + ":" + str(date_time.minute) 
+
+
+        x = {
+            "id" : str(events[i].id),
+            "time_stamp" : time_stamp
+        }
+
+        re.append(x)
+
+    return HttpResponse(json.dumps(re))
+
+
 
 

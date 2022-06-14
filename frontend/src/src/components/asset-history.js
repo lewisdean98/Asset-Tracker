@@ -1,37 +1,30 @@
 import { FlatList, View, Text } from "react-native";
 import React from "react";
-
 import styles from "../style/styles";
 
-const data = [
-    {
-        id : '5545',
-        checked_in : '10-05-1998',
-    },
-    {
-        id : '5535',
-        checked_in : '10-06-1998',
-    },
-    {
-        id : '5543',
-        checked_in : '10-07-1998',
-    },
-];
-
-const ListItem = ({ checked_in }) => (
+const ListItem = ({ time_stamp }) => (
     <View>
-        <Text style={styles.textbox}>{checked_in}</Text>
+        <Text style={styles.historyText}>{time_stamp}</Text>
     </View>
 );
 
-const AssetHistory = () => {  
+const AssetHistory = (props) => {  
+    if (typeof(props.history) == "object") {
+        var data = props.history;
+    }
+    else {
+        var data = JSON.parse(props.history);
+    }
+    
     const renderItem = ({item}) => (
-        <ListItem checked_in={item.checked_in}/>
+        <ListItem time_stamp={item.time_stamp}/>
     );
 
     return (
         <View>
-            <FlatList 
+           <Text style = {styles.textbox}>History</Text>
+           
+           <FlatList 
                 data = {data}
                 renderItem = {renderItem}
                 keyExtractor={item => item.id}

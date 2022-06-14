@@ -13,12 +13,16 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: "row",
+        justifyContent : "space-evenly",
+        backgroundColor : colours.background
     },
 
     textbox : {
         color: colours.text_secondary,
         font : 'sans-serif',
-        fontSize: 30
+        fontSize: 35,
+        textAlign : "center"
     },
 
     input : {
@@ -30,6 +34,28 @@ const styles = StyleSheet.create({
         textAlign : 'center',
         outlineStyle: 'none'
     },
+
+    historyContainer : {
+        borderWidth: 1,
+        alignItems: "center",
+        borderRadius: 15,
+        padding: 10,
+        flex: 1,
+        alignItems : "center",
+        marginRight: 15
+    },
+
+    inputContainer : {
+        flex: 4,
+        alignItems : "center"
+    },
+
+    historyText : {
+        fontSize : 18,
+        color: colours.text_primary,
+        font : 'sans-serif',
+        textAlign : "center"
+    }
 });
 
 export default styles;
